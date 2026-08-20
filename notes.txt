@@ -1,0 +1,109 @@
+https://github.com/data-guru0/AI-Security-Project
+
+config.py->Instead of writing passwords,database URLs, API keys, etc. directly in the code, it loads them securely from AWS Secrets Manager.
+
+socket->Used to get information about the computer.
+boto3->This is AWS SDK for Python.
+It lets Python talk to AWS services.
+
+lru_cache->In this project it is used to store AWS Secrets in memory.
+Assume if we call 100 times it will load 1 time and store in memory.
+lru_cache is a decorator provided by pythons functools module.It is used to cache(remember) the result of a function.So if the function is called again it will fetch result from memory.
+job_id = str(uuid.uuid4())->To get the unique user identifier
+
+asyncpg->It is a python library used to connect to a PostgresSQL database asynchronously
+Pool->A Pool is a collection of database connections
+ex:-If 100 users are accessing application means we need to create 100 connections it will impact performance
+so we will create set of connections in that only we will use.means we will create a pool of connections in that users will access.
+
+apply_guardrail->To apply AWS guardrails
+asyncio.to_thread->It will run sync functions in a separate thread so that our main async functions will be responsive
+
+
+Sentence Transformer:- Is used to convert embeddings
+aioredis:-It is used for redis database
+
+Cosine Similarity:- dotproduct(a,b)/length of magnitude(a)*length of magnitude(b)
+
+encode->Is used to encode text(embeddings)
+hash->Convert to number
+
+json.dumps->Is used to convert list to json
+json.loads->convert json string to list
+
+setex->It store data with expiration
+scan_iter->#It loops through keys one by one
+
+create_task->schedule it as a separate task,allowing the current coroutine to continue.
+asyncio.gather->It will create multiple async tasks parallely and waits for all of them
+
+@asynccontextmanager->A context manager manages the start and end of the application
+
+Setup->Use->Close
+FastAPI call the lifespan application when its created
+aioredis.from_url->It will intializes the redis client
+
+Memory:-
+Short term Memory->Redis
+Long Term Memory->PostgresSQL
+
+Redis:- Fast in memeory data store that can also be used for caching,queues,messaging,streams,sessions,counters,etc.
+
+
+difflib->It is used compare two pieces of text->It tells the ratio of texts ex :- 0.95
+
+rpush->right push ->adds item to last in redis
+expire->It keeps the messages upto specific time after time completes messages will be removed from redis
+lrange->means get list of elements from redis
+ltrim->Trim only latest messages insted of getting all messages
+
+fetchrow->It will fetch only one row
+acquire->It borrows only on db connection
+execute->Insert,update,delete,create
+fetch->It will fetch the records
+
+Redis based job queue
+1.Create a job and put it into redis stream
+redis.xadd->It will create a job and put into redis stream
+
+2.To retrieve the redis result
+redis.get
+
+3.To store the result
+redis.setex
+
+4.To create Consumer group
+redis.xgroup_create
+
+5.To read jobs from consumer group
+redis.xreadgroup
+
+6.Acknowledging the messages
+redis.xack->Whether its processed successfully or not
+
+
+TensorZero:-It is an LLMOPS/AI Infrastructure platform.It helps you build observe,evaluate,experiment with, and optimize production LLM applications
+For TensorZero we need write configuration in toml format
+We need to write system prompts with minijinja extension
+
+
+PYRIT Red Teaming
+PYRIT stands for Pytho Risk Identification Tool.It is developed by microsoft's AI Red Team for automatically and manually testing GenAI/LLM applications
+for security and safety weakness
+
+The goal is to find weakness in your own system.
+
+
+bootstrap.bat is used to set up everything you required for your application for windows
+bootstrap.sh is used to set up everything you required for your application for linux,macos
+
+
+.gitattributes->Some we will get some warnings to ignore this we need this file
+
+
+terraform
+
+terraform init->initalize terraform
+
+terraform plan -var="app_image=placeholder" -var="pyrit_image=placeholder"->To see what Infrastructure should be created
+terraform apply -var="app_image=placeholder" -var="pyrit_image=placeholder"->It will create all resources in aws.
