@@ -97,7 +97,7 @@ async def eval_quality(config: Config, topic: str, report: str) -> dict:
 
 
 
-@traceable(run_type="chain", name="evaluate-report")
+@traceable(run_type="chain report", name="evaluate-report")
 async def evaluate_report(config: Config, job_id: str, topic: str, report: str) -> dict:
     """Runs all 4 LLM judges in parallel. Called on EVERY research job automatically."""
     results = await asyncio.gather(
